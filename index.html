@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONNECT__DEV - Cotizador Web</title>
+    <title>CONNECT__DEV - Desarrollo Web & Portafolio</title>
     <!-- Iconos Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css">
@@ -14,240 +14,354 @@
     <div class="bg-overlay"></div>
 
     <main class="container">
-        <!-- Encabezado -->
-        <header class="header">
-            <h1 class="brand-title">CONNECT__DEV</h1>
-            <p class="brand-subtitle">Llena el formulario con los requerimientos de tu página</p>
-        </header>
+        <!-- ==========================================
+             SECCIÓN HERO Y PORTAFOLIO / CATÁLOGO
+             ========================================== -->
+        <section class="hero-section">
+            <header class="header">
+                <span class="badge-tech"><i data-lucide="code-2"></i> Desarrollo Web Premium</span>
+                <h1 class="brand-title">CONNECT__DEV</h1>
+                <p class="brand-subtitle">Transformamos ideas en experiencias digitales de alto impacto.</p>
+            </header>
 
-        <!-- Formulario Progresivo -->
-        <form id="requirementsForm" class="glass-card">
-
-            <!-- PASO 1: Identificación -->
-            <div class="form-step active" id="step-1">
-                <label for="nombre" class="step-label">
-                    <i data-lucide="user"></i> ¿Cuál es tu nombre o el de tu negocio?
-                </label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ej. Carlos Pérez o Muebles Pérez" autocomplete="off">
+            <!-- Filtro de proyectos (Pestañas) -->
+            <div class="portfolio-filter-container">
+                <button type="button" class="filter-btn active" data-filter="terminados">
+                    <i data-lucide="check-circle-2"></i> Proyectos Terminados
+                </button>
+                <button type="button" class="filter-btn" data-filter="proceso">
+                    <i data-lucide="clock"></i> En Proceso
+                </button>
             </div>
 
-            <!-- PASO 2: Ubicación Opcional -->
-            <div class="form-step" id="step-2">
-                <label class="step-label">
-                    <i data-lucide="map-pin"></i> Ubicación del negocio
-                </label>
+            <!-- Catálogo / Galería de Proyectos -->
+            <div class="portfolio-grid">
+                
+                <!-- Proyecto 1 (Terminado) -->
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="project-card" data-category="terminados">
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Vista previa de Nova Fit Club" class="project-img">
+                        <span class="status-badge status-done">Terminado</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Nova Fit Club</h3>
+                            <i data-lucide="external-link" class="external-icon"></i>
+                        </div>
+                        <p class="project-category">Landing Page / Gimnasio</p>
+                    </div>
+                </a>
 
-                <label class="checkbox-container">
-                    <input type="checkbox" id="wantLocation">
-                    <span class="checkmark"></span>
-                    <span class="checkbox-text">Deseo agregar mi ubicación (Opcional)</span>
-                </label>
+                <!-- Proyecto 2 (Terminado) -->
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="project-card" data-category="terminados">
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Vista previa de Gourmet Bistro" class="project-img">
+                        <span class="status-badge status-done">Terminado</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Gourmet Bistro</h3>
+                            <i data-lucide="external-link" class="external-icon"></i>
+                        </div>
+                        <p class="project-category">Menú Digital / Restaurante</p>
+                    </div>
+                </a>
 
-                <div id="locationContainer" class="collapsible-content">
-                    <button type="button" id="btnLocation" class="btn-secondary">
-                        <i data-lucide="locate-fixed"></i> Detectar mi ubicación automáticamente
+                <!-- Proyecto 3 (Terminado) -->
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="project-card" data-category="terminados">
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80" alt="Vista previa de Lumina Store" class="project-img">
+                        <span class="status-badge status-done">Terminado</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Lumina Store</h3>
+                            <i data-lucide="external-link" class="external-icon"></i>
+                        </div>
+                        <p class="project-category">E-Commerce / Tienda de Moda</p>
+                    </div>
+                </a>
+
+                <!-- Proyecto 4 (En Proceso) -->
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="project-card hidden-card" data-category="proceso">
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" alt="Vista previa de Apex Corp" class="project-img">
+                        <span class="status-badge status-progress">En Proceso</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Apex Logistics</h3>
+                            <i data-lucide="external-link" class="external-icon"></i>
+                        </div>
+                        <p class="project-category">Sitio Corporativo / Logística</p>
+                    </div>
+                </a>
+
+                <!-- Proyecto 5 (En Proceso) -->
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="project-card hidden-card" data-category="proceso">
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1629904853723-530a2781b7a0?auto=format&fit=crop&w=600&q=80" alt="Vista previa de Dr. Valero" class="project-img">
+                        <span class="status-badge status-progress">En Proceso</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Dr. Valero Clinic</h3>
+                            <i data-lucide="external-link" class="external-icon"></i>
+                        </div>
+                        <p class="project-category">Marca Personal / Salud</p>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- Botón Rebotando (Call To Action para Scrollear al Formulario) -->
+            <div class="cta-scroll-wrapper">
+                <button type="button" id="btnScrollToForm" class="btn-bounce">
+                    <span>Cotizar mi proyecto web</span>
+                    <i data-lucide="arrow-down"></i>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             SECCIÓN FORMULARIO COTIZADOR
+             ========================================== -->
+        <section id="formSection" class="form-section">
+            <div class="form-header">
+                <h2 class="form-section-title">Comienza tu proyecto</h2>
+                <p class="form-section-subtitle">Llena el formulario con los requerimientos de tu página</p>
+            </div>
+
+            <!-- Formulario Progresivo -->
+            <form id="requirementsForm" class="glass-card">
+
+                <!-- PASO 1: Identificación -->
+                <div class="form-step active" id="step-1">
+                    <label for="nombre" class="step-label">
+                        <i data-lucide="user"></i> ¿Cuál es tu nombre o el de tu negocio?
+                    </label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. Carlos Pérez o Muebles Pérez" autocomplete="off">
+                </div>
+
+                <!-- PASO 2: Ubicación Opcional -->
+                <div class="form-step" id="step-2">
+                    <label class="step-label">
+                        <i data-lucide="map-pin"></i> Ubicación del negocio
+                    </label>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="wantLocation">
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">Deseo agregar mi ubicación (Opcional)</span>
+                    </label>
+
+                    <div id="locationContainer" class="collapsible-content">
+                        <button type="button" id="btnLocation" class="btn-secondary">
+                            <i data-lucide="locate-fixed"></i> Detectar mi ubicación automáticamente
+                        </button>
+                        <p id="locationStatus" class="status-text"></p>
+                    </div>
+
+                    <input type="hidden" id="ubicacion" name="ubicacion" value="No especificada">
+
+                    <button type="button" id="btnStep2Next" class="btn-next">
+                        Continuar <i data-lucide="arrow-right"></i>
                     </button>
-                    <p id="locationStatus" class="status-text"></p>
                 </div>
 
-                <input type="hidden" id="ubicacion" name="ubicacion" value="No especificada">
+                <!-- PASO 3: Objetivo del Proyecto -->
+                <div class="form-step" id="step-3">
+                    <label class="step-label">
+                        <i data-lucide="target"></i> ¿Cuál es el objetivo principal?
+                    </label>
+                    <div class="options-grid">
+                        <label class="option-card">
+                            <input type="radio" name="objetivo" value="Desarrollar un sitio web para mi negocio">
+                            <div class="card-content">
+                                <i data-lucide="globe"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Desarrollar un sitio web para mi negocio</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="objetivo" value="Solicitar asesoría para mi proyecto">
+                            <div class="card-content">
+                                <i data-lucide="message-circle"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Solicitar asesoría para mi proyecto</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
 
-                <button type="button" id="btnStep2Next" class="btn-next">
-                    Continuar <i data-lucide="arrow-right"></i>
+                <!-- PASO 4: Tipo de Web -->
+                <div class="form-step" id="step-4">
+                    <label class="step-label">
+                        <i data-lucide="layout"></i> Selecciona el tipo de web que necesitas
+                    </label>
+                    <div class="options-grid">
+                        <label class="option-card">
+                            <input type="radio" name="tipo_pagina" value="Landing Page">
+                            <div class="card-content">
+                                <i data-lucide="crosshair"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Landing Page</span>
+                                    <span class="card-desc">Captación de clientes en una sola vista.</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="tipo_pagina" value="Sitio Corporativo">
+                            <div class="card-content">
+                                <i data-lucide="building-2"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Sitio Corporativo</span>
+                                    <span class="card-desc">Presentación multipágina de la empresa y servicios.</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="tipo_pagina" value="Tienda Online (E-Commerce)">
+                            <div class="card-content">
+                                <i data-lucide="shopping-bag"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Tienda Online (E-Commerce)</span>
+                                    <span class="card-desc">Catálogo con carrito y pagos integrados.</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="tipo_pagina" value="OnePage">
+                            <div class="card-content">
+                                <i data-lucide="file-text"></i>
+                                <div class="card-info">
+                                    <span class="card-title">OnePage</span>
+                                    <span class="card-desc">Información completa en navegación fluida.</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="tipo_pagina" value="Menú / Catálogo Digital">
+                            <div class="card-content">
+                                <i data-lucide="utensils"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Menú / Catálogo Digital</span>
+                                    <span class="card-desc">Ideal para restaurantes y comercios.</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="tipo_pagina" value="Proyecto a Medida">
+                            <div class="card-content">
+                                <i data-lucide="sliders"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Proyecto a Medida</span>
+                                    <span class="card-desc">Funcionalidades personalizadas.</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- PASO 5: Referencia de Ejemplo -->
+                <div class="form-step" id="step-5">
+                    <label class="step-label">
+                        <i data-lucide="link"></i> Páginas de referencia
+                    </label>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="hasReference">
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">Tengo una página web de referencia o ejemplo</span>
+                    </label>
+
+                    <div id="referenceContainer" class="collapsible-content">
+                        <input type="text" id="referenciaInput" placeholder="Pega la URL o describe el ejemplo aquí..." autocomplete="off">
+                    </div>
+
+                    <button type="button" id="btnStep5Next" class="btn-next">
+                        Continuar <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- PASO 6: Sector del Negocio -->
+                <div class="form-step" id="step-6">
+                    <label class="step-label">
+                        <i data-lucide="briefcase"></i> Sector o rubro de tu negocio
+                    </label>
+                    <div class="options-grid">
+                        <label class="option-card">
+                            <input type="radio" name="sector" value="Servicios Profesionales">
+                            <div class="card-content">
+                                <i data-lucide="award"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Servicios Profesionales</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="sector" value="Comercio / Retail">
+                            <div class="card-content">
+                                <i data-lucide="store"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Comercio / Retail</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="sector" value="Marca Personal">
+                            <div class="card-content">
+                                <i data-lucide="user-check"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Marca Personal</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="sector" value="Empresa / Corporativo">
+                            <div class="card-content">
+                                <i data-lucide="building"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Empresa / Corporativo</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="sector" value="Otro Sector">
+                            <div class="card-content">
+                                <i data-lucide="more-horizontal"></i>
+                                <div class="card-info">
+                                    <span class="card-title">Otro Sector</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- BOTÓN FINAL DE ENVÍO -->
+                <div class="form-step" id="step-submit">
+                    <button type="submit" id="btnWhatsapp" class="btn-whatsapp">
+                        <i data-lucide="message-square"></i> Enviar requerimientos por WhatsApp
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Ventana Modal / Tarjeta de Confirmación de Envío -->
+            <div id="confirmationCard" class="glass-card confirmation-card">
+                <div class="success-icon">
+                    <i data-lucide="check-circle-2"></i>
+                </div>
+                <h2 class="confirmation-title">¡Información Enviada!</h2>
+                <p class="confirmation-text">Hemos redirigido tus datos a WhatsApp. Nos pondremos en contacto contigo a la brevedad para impulsar tu proyecto.</p>
+                <button type="button" class="btn-rounded-dummy">
+                    Entendido
                 </button>
             </div>
-
-            <!-- PASO 3: Objetivo del Proyecto -->
-            <div class="form-step" id="step-3">
-                <label class="step-label">
-                    <i data-lucide="target"></i> ¿Cuál es el objetivo principal?
-                </label>
-                <div class="options-grid">
-                    <label class="option-card">
-                        <input type="radio" name="objetivo" value="Desarrollar un sitio web para mi negocio">
-                        <div class="card-content">
-                            <i data-lucide="globe"></i>
-                            <div class="card-info">
-                                <span class="card-title">Desarrollar un sitio web para mi negocio</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label class="option-card">
-                        <input type="radio" name="objetivo" value="Solicitar asesoría para mi proyecto">
-                        <div class="card-content">
-                            <i data-lucide="message-circle"></i>
-                            <div class="card-info">
-                                <span class="card-title">Solicitar asesoría para mi proyecto</span>
-                            </div>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- PASO 4: Tipo de Web -->
-            <div class="form-step" id="step-4">
-                <label class="step-label">
-                    <i data-lucide="layout"></i> Selecciona el tipo de web que necesitas
-                </label>
-                <div class="options-grid">
-                    <label class="option-card">
-                        <input type="radio" name="tipo_pagina" value="Landing Page">
-                        <div class="card-content">
-                            <i data-lucide="crosshair"></i>
-                            <div class="card-info">
-                                <span class="card-title">Landing Page</span>
-                                <span class="card-desc">Captación de clientes en una sola vista.</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label class="option-card">
-                        <input type="radio" name="tipo_pagina" value="Sitio Corporativo">
-                        <div class="card-content">
-                            <i data-lucide="building-2"></i>
-                            <div class="card-info">
-                                <span class="card-title">Sitio Corporativo</span>
-                                <span class="card-desc">Presentación multipágina de la empresa y servicios.</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label class="option-card">
-                        <input type="radio" name="tipo_pagina" value="Tienda Online (E-Commerce)">
-                        <div class="card-content">
-                            <i data-lucide="shopping-bag"></i>
-                            <div class="card-info">
-                                <span class="card-title">Tienda Online (E-Commerce)</span>
-                                <span class="card-desc">Catálogo con carrito y pagos integrados.</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label class="option-card">
-                        <input type="radio" name="tipo_pagina" value="OnePage">
-                        <div class="card-content">
-                            <i data-lucide="file-text"></i>
-                            <div class="card-info">
-                                <span class="card-title">OnePage</span>
-                                <span class="card-desc">Información completa en navegación fluida.</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label class="option-card">
-                        <input type="radio" name="tipo_pagina" value="Menú / Catálogo Digital">
-                        <div class="card-content">
-                            <i data-lucide="utensils"></i>
-                            <div class="card-info">
-                                <span class="card-title">Menú / Catálogo Digital</span>
-                                <span class="card-desc">Ideal para restaurantes y comercios.</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label class="option-card">
-                        <input type="radio" name="tipo_pagina" value="Proyecto a Medida">
-                        <div class="card-content">
-                            <i data-lucide="sliders"></i>
-                            <div class="card-info">
-                                <span class="card-title">Proyecto a Medida</span>
-                                <span class="card-desc">Funcionalidades personalizadas.</span>
-                            </div>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- PASO 5: Referencia de Ejemplo -->
-            <div class="form-step" id="step-5">
-                <label class="step-label">
-                    <i data-lucide="link"></i> Páginas de referencia
-                </label>
-
-                <label class="checkbox-container">
-                    <input type="checkbox" id="hasReference">
-                    <span class="checkmark"></span>
-                    <span class="checkbox-text">Tengo una página web de referencia o ejemplo</span>
-                </label>
-
-                <div id="referenceContainer" class="collapsible-content">
-                    <input type="text" id="referenciaInput" placeholder="Pega la URL o describe el ejemplo aquí..." autocomplete="off">
-                </div>
-
-                <button type="button" id="btnStep5Next" class="btn-next">
-                    Continuar <i data-lucide="arrow-right"></i>
-                </button>
-            </div>
-
-            <!-- PASO 6: Sector del Negocio -->
-            <div class="form-step" id="step-6">
-                <label class="step-label">
-                    <i data-lucide="briefcase"></i> Sector o rubro de tu negocio
-                </label>
-                <div class="options-grid">
-                    <label class="option-card">
-                        <input type="radio" name="sector" value="Servicios Profesionales">
-                        <div class="card-content">
-                            <i data-lucide="award"></i>
-                            <div class="card-info">
-                                <span class="card-title">Servicios Profesionales</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label class="option-card">
-                        <input type="radio" name="sector" value="Comercio / Retail">
-                        <div class="card-content">
-                            <i data-lucide="store"></i>
-                            <div class="card-info">
-                                <span class="card-title">Comercio / Retail</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label class="option-card">
-                        <input type="radio" name="sector" value="Marca Personal">
-                        <div class="card-content">
-                            <i data-lucide="user-check"></i>
-                            <div class="card-info">
-                                <span class="card-title">Marca Personal</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label class="option-card">
-                        <input type="radio" name="sector" value="Empresa / Corporativo">
-                        <div class="card-content">
-                            <i data-lucide="building"></i>
-                            <div class="card-info">
-                                <span class="card-title">Empresa / Corporativo</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label class="option-card">
-                        <input type="radio" name="sector" value="Otro Sector">
-                        <div class="card-content">
-                            <i data-lucide="more-horizontal"></i>
-                            <div class="card-info">
-                                <span class="card-title">Otro Sector</span>
-                            </div>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- BOTÓN FINAL DE ENVÍO -->
-            <div class="form-step" id="step-submit">
-                <button type="submit" id="btnWhatsapp" class="btn-whatsapp">
-                    <i data-lucide="message-square"></i> Enviar requerimientos por WhatsApp
-                </button>
-            </div>
-
-        </form>
-
-        <!-- Ventana Modal / Tarjeta de Confirmación de Envío -->
-        <div id="confirmationCard" class="glass-card confirmation-card">
-            <div class="success-icon">
-                <i data-lucide="check-circle-2"></i>
-            </div>
-            <h2 class="confirmation-title">¡Información Enviada!</h2>
-            <p class="confirmation-text">Hemos redirigido tus datos a WhatsApp. Nos pondremos en contacto contigo a la brevedad para impulsar tu proyecto.</p>
-            <button type="button" class="btn-rounded-dummy">
-                Entendido
-            </button>
-        </div>
+        </section>
     </main>
 
     <script src="script.js"></script>

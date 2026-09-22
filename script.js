@@ -4,7 +4,45 @@ document.addEventListener("DOMContentLoaded", () => {
         lucide.createIcons();
     }
 
-    // Elementos DOM principales
+    // ==========================================
+    // LÓGICA DE FILTRADO DE PORTAFOLIO
+    // ==========================================
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            // Activar botón clickeado
+            filterButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const filterValue = btn.getAttribute("data-filter");
+
+            // Mostrar / Ocultar tarjetas según el filtro
+            projectCards.forEach(card => {
+                const category = card.getAttribute("data-category");
+                if (filterValue === category) {
+                    card.classList.remove("hidden-card");
+                } else {
+                    card.classList.add("hidden-card");
+                }
+            });
+        });
+    });
+
+    // ==========================================
+    // SCROLL SUAVE DESDE EL BOTÓN REBOTANDO
+    // ==========================================
+    const btnScrollToForm = document.getElementById("btnScrollToForm");
+    const formSection = document.getElementById("formSection");
+
+    btnScrollToForm.addEventListener("click", () => {
+        formSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    // ==========================================
+    // LÓGICA DEL FORMULARIO PROGRESIVO
+    // ==========================================
     const form = document.getElementById("requirementsForm");
     const inputNombre = document.getElementById("nombre");
     const confirmationCard = document.getElementById("confirmationCard");
@@ -31,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const step6 = document.getElementById("step-6");
     const stepSubmit = document.getElementById("step-submit");
 
-    // Función aux para activar/mostrar pasos con desplazamiento suave
+    // Función aux para activar/mostrar pasos
     function activateStep(stepElement) {
         if (stepElement && !stepElement.classList.contains("active")) {
             stepElement.classList.add("active");
@@ -90,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             (error) => {
                 console.warn(error);
-                locationStatus.textContent = "No se pudo obtener el acceso a la ubicación.";
+                locationStatus.textContent = "No se pudo obtener acceso a la ubicación.";
                 inputUbicacion.value = "No especificada";
             },
             { timeout: 8000 }
@@ -165,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const sectorRadio = document.querySelector('input[name="sector"]:checked');
         const sector = sectorRadio ? sectorRadio.value : "No especificado";
 
-        // Estructura exacta del mensaje
+        // Mensaje formateado
         const mensaje = `Hola! Soy *${nombre}* y estoy interesado en realizar un proyecto web con los siguientes requerimientos:
 
 📍 *Ubicación:* ${ubicacion}
@@ -181,22 +219,19 @@ document.addEventListener("DOMContentLoaded", () => {
         // Abrir pestaña de WhatsApp
         window.open(urlWhatsapp, "_blank");
 
-        // 1. Aplicar clase de desvanecimiento al formulario
+        // Animación de desvanecimiento
         form.classList.add("fade-out");
 
-        // 2. Ocultar formulario de forma completa y mostrar la tarjeta de confirmación
         setTimeout(() => {
             form.style.display = "none";
             confirmationCard.classList.add("show");
             
-            // Re-escaneo de iconos Lucide por si aplica
             if (window.lucide) {
                 lucide.createIcons();
             }
 
-            // Transición suave de entrada para la ventana de confirmación
             setTimeout(() => {
-                confirmationCard.classList.add("active");
+                confirmationCard.classList.active ? null : confirmationCard.classList.add("active");
             }, 50);
         }, 500);
     });

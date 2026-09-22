@@ -26,8 +26,8 @@ body {
     color: var(--text-main);
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 1rem;
+    align-items: flex-start;
+    padding: 1.5rem 1rem 3rem 1rem;
     position: relative;
     overflow-x: hidden;
 }
@@ -50,38 +50,289 @@ body {
 }
 
 /* ==========================================
-   CONTENEDOR Y HEADER
+   CONTENEDOR PRINCIPAL
    ========================================== */
 .container {
     width: 100%;
-    max-width: 500px;
+    max-width: 520px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
 }
 
-.header {
+/* ==========================================
+   SECCIÓN HERO & HEADER
+   ========================================== */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
     text-align: center;
-    margin-bottom: 1.5rem;
+}
+
+.badge-tech {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    background: rgba(0, 242, 254, 0.1);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    color: var(--primary-cyan);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+}
+
+.badge-tech svg {
+    width: 14px;
+    height: 14px;
 }
 
 .brand-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     letter-spacing: 2px;
     background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
+    text-shadow: 0 0 30px rgba(0, 242, 254, 0.35);
 }
 
 .brand-subtitle {
     font-size: 0.95rem;
     color: var(--text-muted);
-    margin-top: 0.4rem;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ==========================================
-   GLASSMORPHISM CARD
+   FILTROS DE PORTAFOLIO (PESTAÑAS)
    ========================================== */
+.portfolio-filter-container {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    padding: 0.3rem;
+    border-radius: 50px;
+    width: 100%;
+    gap: 0.3rem;
+}
+
+.filter-btn {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+    border-radius: 50px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(79, 172, 254, 0.2));
+    border: 1px solid var(--primary-cyan);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.25);
+}
+
+/* ==========================================
+   GRID & TARJETAS DE PROYECTOS
+   ========================================== */
+.portfolio-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.project-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.project-card:active {
+    transform: scale(0.98);
+}
+
+.project-card.hidden-card {
+    display: none;
+}
+
+.project-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.05);
+}
+
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.3rem 0.7rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+}
+
+.status-done {
+    background: rgba(37, 211, 102, 0.85);
+    color: #ffffff;
+}
+
+.status-progress {
+    background: rgba(255, 170, 0, 0.85);
+    color: #000000;
+}
+
+.project-content {
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: left;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.external-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--primary-cyan);
+}
+
+.project-category {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   BOTÓN CON ANIMACIÓN DE REBOTE (CTA SCROLL)
+   ========================================== */
+.cta-scroll-wrapper {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-bounce {
+    padding: 0.95rem 1.8rem;
+    border-radius: 50px;
+    border: 1px solid var(--primary-cyan);
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(79, 172, 254, 0.2));
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+    animation: bounce 2s infinite;
+    transition: background 0.3s ease;
+}
+
+.btn-bounce svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-bounce:active {
+    transform: scale(0.96);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ==========================================
+   SECCIÓN FORMULARIO
+   ========================================== */
+.form-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-header {
+    text-align: center;
+}
+
+.form-section-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.form-section-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+}
+
+/* Glassmorphism Card para el Formulario */
 .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(16px);
@@ -96,16 +347,13 @@ body {
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Animación de desvanecimiento para el formulario */
 .glass-card.fade-out {
     opacity: 0;
     transform: translateY(-20px) scale(0.95);
     pointer-events: none;
 }
 
-/* ==========================================
-   PASOS DEL FORMULARIO (FLUJO PROGRESIVO)
-   ========================================== */
+/* Pasos del Formulario */
 .form-step {
     display: none;
     opacity: 0;
@@ -136,7 +384,6 @@ body {
     color: var(--primary-cyan);
 }
 
-/* Inputs de texto */
 input[type="text"] {
     width: 100%;
     padding: 0.9rem 1rem;
@@ -155,7 +402,7 @@ input[type="text"]:focus {
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Checkboxes Personalizados */
+/* Checkboxes */
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -214,7 +461,6 @@ input[type="text"]:focus {
     color: #cbd5e0;
 }
 
-/* Desplegable de contenido opcional */
 .collapsible-content {
     display: none;
     flex-direction: column;
@@ -232,7 +478,7 @@ input[type="text"]:focus {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Botones secundario y siguiente */
+/* Botones */
 .btn-secondary {
     width: 100%;
     padding: 0.85rem;
@@ -283,7 +529,7 @@ input[type="text"]:focus {
     min-height: 1.2rem;
 }
 
-/* Grid de opciones */
+/* Options Grid */
 .options-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -336,7 +582,6 @@ input[type="text"]:focus {
     line-height: 1.2;
 }
 
-/* Estado seleccionado de la tarjeta */
 .option-card input[type="radio"]:checked + .card-content {
     background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(79, 172, 254, 0.15));
     border-color: var(--primary-cyan);
@@ -351,7 +596,7 @@ input[type="text"]:focus {
     color: var(--primary-cyan);
 }
 
-/* Botón WhatsApp */
+/* WhatsApp Button */
 .btn-whatsapp {
     width: 100%;
     padding: 1rem;
@@ -375,9 +620,7 @@ input[type="text"]:focus {
     transform: scale(0.97);
 }
 
-/* ==========================================
-   VENTANA / TARJETA DE CONFIRMACIÓN
-   ========================================== */
+/* Confirmation Modal */
 .confirmation-card {
     display: none;
     opacity: 0;
@@ -429,12 +672,11 @@ input[type="text"]:focus {
     line-height: 1.5;
 }
 
-/* Botón con bordes redondeados (Radius) */
 .btn-rounded-dummy {
     width: 100%;
     max-width: 220px;
     padding: 0.85rem 1.8rem;
-    border-radius: 50px; /* Bordes totalmente redondeados */
+    border-radius: 50px;
     border: 1px solid var(--primary-cyan);
     background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(79, 172, 254, 0.15));
     color: #ffffff;
@@ -451,7 +693,7 @@ input[type="text"]:focus {
     background: rgba(0, 242, 254, 0.25);
 }
 
-/* Desktop */
+/* Desktop Styles */
 @media (min-width: 600px) {
     .options-grid {
         grid-template-columns: 1fr;
