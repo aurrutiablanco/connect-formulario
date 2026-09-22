@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const step6 = document.getElementById("step-6");
     const stepSubmit = document.getElementById("step-submit");
 
-    // Función aux para activar/mostrar pasos
+    // Función auxiliar para activar/mostrar pasos
     function activateStep(stepElement) {
         if (stepElement && !stepElement.classList.contains("active")) {
             stepElement.classList.add("active");
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const sectorRadio = document.querySelector('input[name="sector"]:checked');
         const sector = sectorRadio ? sectorRadio.value : "No especificado";
 
-        // Mensaje formateado
+        // Mensaje formateado para WhatsApp
         const mensaje = `Hola! Soy *${nombre}* y estoy interesado en realizar un proyecto web con los siguientes requerimientos:
 
 📍 *Ubicación:* ${ubicacion}
@@ -212,14 +212,14 @@ document.addEventListener("DOMContentLoaded", () => {
 🔗 *Referencia:* ${referencia}
 💼 *Sector:* ${sector}`;
 
-        // Número destino en formato internacional (+584120700903)
+        // Número destino en formato internacional
         const telefono = "584120700903";
         const urlWhatsapp = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(mensaje)}`;
 
-        // Abrir pestaña de WhatsApp
+        // Abrir ventana de WhatsApp
         window.open(urlWhatsapp, "_blank");
 
-        // Animación de desvanecimiento
+        // Animación de salida del formulario
         form.classList.add("fade-out");
 
         setTimeout(() => {
@@ -231,7 +231,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             setTimeout(() => {
-                confirmationCard.classList.active ? null : confirmationCard.classList.add("active");
+                if (!confirmationCard.classList.contains("active")) {
+                    confirmationCard.classList.add("active");
+                }
             }, 50);
         }, 500);
     });

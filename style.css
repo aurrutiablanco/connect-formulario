@@ -1,5 +1,5 @@
 /* ==========================================
-   RESET Y VARIABLES (MOBILE FIRST)
+   RESET Y VARIABLES
    ========================================== */
 * {
     margin: 0;
@@ -27,7 +27,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 1.5rem 1rem 3rem 1rem;
+    padding: 2rem 1rem 4rem 1rem;
     position: relative;
     overflow-x: hidden;
 }
@@ -51,14 +51,15 @@ body {
 
 /* ==========================================
    CONTENEDOR PRINCIPAL
+   Ampliado para albergar 4 columnas cómodamente
    ========================================== */
 .container {
     width: 100%;
-    max-width: 520px;
+    max-width: 1150px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 3.5rem;
+    gap: 7rem; /* ESPACIO CONSIDERABLE ENTRE HERO Y FORMULARIO */
 }
 
 /* ==========================================
@@ -68,8 +69,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.8rem;
+    gap: 2rem;
     text-align: center;
+    width: 100%;
 }
 
 .badge-tech {
@@ -94,7 +96,7 @@ body {
 }
 
 .brand-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 800;
     letter-spacing: 2px;
     background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
@@ -104,11 +106,11 @@ body {
 }
 
 .brand-subtitle {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-muted);
     margin-top: 0.5rem;
     line-height: 1.5;
-    max-width: 90%;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -120,25 +122,26 @@ body {
     display: flex;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
-    padding: 0.3rem;
+    padding: 0.35rem;
     border-radius: 50px;
     width: 100%;
-    gap: 0.3rem;
+    max-width: 450px;
+    gap: 0.4rem;
 }
 
 .filter-btn {
     flex: 1;
-    padding: 0.75rem 0.5rem;
+    padding: 0.75rem 1rem;
     border-radius: 50px;
     border: none;
     background: transparent;
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -156,13 +159,27 @@ body {
 }
 
 /* ==========================================
-   GRID & TARJETAS DE PROYECTOS
+   GRID DE PORTAFOLIO (4 COLUMNAS HORIZONTALES)
    ========================================== */
 .portfolio-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 1 col en móviles */
+    gap: 1.3rem;
     width: 100%;
+}
+
+/* En tablets (2 columnas) */
+@media (min-width: 600px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* En escritorio (4 COLUMNAS HORIZONTALES EXACTAS) */
+@media (min-width: 900px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .project-card {
@@ -180,18 +197,24 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 242, 254, 0.4);
+    box-shadow: 0 12px 30px rgba(0, 242, 254, 0.25);
+}
+
 .project-card:active {
     transform: scale(0.98);
 }
 
 .project-card.hidden-card {
-    display: none;
+    display: none !important;
 }
 
 .project-img-wrapper {
     position: relative;
     width: 100%;
-    height: 170px;
+    height: 160px;
     overflow: hidden;
 }
 
@@ -203,7 +226,7 @@ body {
 }
 
 .project-card:hover .project-img {
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
 
 .status-badge {
@@ -228,7 +251,7 @@ body {
 }
 
 .project-content {
-    padding: 1rem 1.2rem;
+    padding: 1rem 1.1rem;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -242,7 +265,7 @@ body {
 }
 
 .project-title {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: #ffffff;
 }
@@ -254,7 +277,7 @@ body {
 }
 
 .project-category {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
 }
 
@@ -262,14 +285,14 @@ body {
    BOTÓN CON ANIMACIÓN DE REBOTE (CTA SCROLL)
    ========================================== */
 .cta-scroll-wrapper {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .btn-bounce {
-    padding: 0.95rem 1.8rem;
+    padding: 1rem 2rem;
     border-radius: 50px;
     border: 1px solid var(--primary-cyan);
     background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(79, 172, 254, 0.2));
@@ -307,10 +330,12 @@ body {
 }
 
 /* ==========================================
-   SECCIÓN FORMULARIO
+   SECCIÓN FORMULARIO (Centrado y elegante)
    ========================================== */
 .form-section {
     width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
@@ -321,7 +346,7 @@ body {
 }
 
 .form-section-title {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 800;
     color: #ffffff;
 }
@@ -339,7 +364,7 @@ body {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
-    padding: 1.5rem;
+    padding: 1.6rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
@@ -691,11 +716,4 @@ input[type="text"]:focus {
 .btn-rounded-dummy:active {
     transform: scale(0.96);
     background: rgba(0, 242, 254, 0.25);
-}
-
-/* Desktop Styles */
-@media (min-width: 600px) {
-    .options-grid {
-        grid-template-columns: 1fr;
-    }
 }
