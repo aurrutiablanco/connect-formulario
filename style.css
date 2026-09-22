@@ -1,0 +1,459 @@
+/* ==========================================
+   RESET Y VARIABLES (MOBILE FIRST)
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --bg-dark: #07090e;
+    --primary-cyan: #00f2fe;
+    --primary-blue: #4facfe;
+    --whatsapp-green: #25d366;
+    --glass-bg: rgba(18, 24, 38, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --text-main: #ffffff;
+    --text-muted: #a0aec0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   FONDO CON EFECTO DE PROFUNDIDAD (BLUR)
+   ========================================== */
+.bg-overlay {
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px) brightness(0.35);
+    transform: scale(1.05);
+    z-index: -1;
+}
+
+/* ==========================================
+   CONTENEDOR Y HEADER
+   ========================================== */
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.brand-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
+}
+
+.brand-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+}
+
+/* ==========================================
+   GLASSMORPHISM CARD
+   ========================================== */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animación de desvanecimiento para el formulario */
+.glass-card.fade-out {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+    pointer-events: none;
+}
+
+/* ==========================================
+   PASOS DEL FORMULARIO (FLUJO PROGRESIVO)
+   ========================================== */
+.form-step {
+    display: none;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-step.active {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step-label {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #e2e8f0;
+}
+
+.step-label svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-cyan);
+}
+
+/* Inputs de texto */
+input[type="text"] {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary-cyan);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Checkboxes Personalizados */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.75rem 0.9rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: all 0.25s ease;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    height: 20px;
+    width: 20px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--primary-cyan);
+    border-color: var(--primary-cyan);
+}
+
+.checkmark:after {
+    content: "";
+    display: none;
+    width: 5px;
+    height: 10px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-text {
+    font-size: 0.9rem;
+    color: #cbd5e0;
+}
+
+/* Desplegable de contenido opcional */
+.collapsible-content {
+    display: none;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.2rem;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.collapsible-content.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botones secundario y siguiente */
+.btn-secondary {
+    width: 100%;
+    padding: 0.85rem;
+    border-radius: 12px;
+    border: 1px solid var(--primary-cyan);
+    background: rgba(0, 242, 254, 0.1);
+    color: var(--primary-cyan);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:active {
+    transform: scale(0.98);
+    background: rgba(0, 242, 254, 0.2);
+}
+
+.btn-next {
+    width: 100%;
+    padding: 0.85rem;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+    color: #07090e;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.4rem;
+}
+
+.btn-next:active {
+    transform: scale(0.98);
+}
+
+.status-text {
+    font-size: 0.85rem;
+    color: var(--primary-cyan);
+    min-height: 1.2rem;
+}
+
+/* Grid de opciones */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+}
+
+.option-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.option-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.card-content {
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    transition: all 0.25s ease;
+}
+
+.card-content svg {
+    width: 22px;
+    height: 22px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.card-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+/* Estado seleccionado de la tarjeta */
+.option-card input[type="radio"]:checked + .card-content {
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(79, 172, 254, 0.15));
+    border-color: var(--primary-cyan);
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+}
+
+.option-card input[type="radio"]:checked + .card-content .card-title {
+    color: #ffffff;
+}
+
+.option-card input[type="radio"]:checked + .card-content svg {
+    color: var(--primary-cyan);
+}
+
+/* Botón WhatsApp */
+.btn-whatsapp {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.btn-whatsapp:active {
+    transform: scale(0.97);
+}
+
+/* ==========================================
+   VENTANA / TARJETA DE CONFIRMACIÓN
+   ========================================== */
+.confirmation-card {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 2.2rem 1.5rem;
+    gap: 1.2rem;
+}
+
+.confirmation-card.show {
+    display: flex;
+}
+
+.confirmation-card.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(37, 211, 102, 0.15);
+    border: 1px solid rgba(37, 211, 102, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--whatsapp-green);
+    margin-bottom: 0.3rem;
+    box-shadow: 0 0 25px rgba(37, 211, 102, 0.25);
+}
+
+.success-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.confirmation-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.confirmation-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Botón con bordes redondeados (Radius) */
+.btn-rounded-dummy {
+    width: 100%;
+    max-width: 220px;
+    padding: 0.85rem 1.8rem;
+    border-radius: 50px; /* Bordes totalmente redondeados */
+    border: 1px solid var(--primary-cyan);
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(79, 172, 254, 0.15));
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+    margin-top: 0.5rem;
+}
+
+.btn-rounded-dummy:active {
+    transform: scale(0.96);
+    background: rgba(0, 242, 254, 0.25);
+}
+
+/* Desktop */
+@media (min-width: 600px) {
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+}
